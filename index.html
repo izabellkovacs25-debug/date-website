@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Question 💗</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ENVELOPE SCREEN -->
+    <section id="envelopeScreen" class="screen active">
+
+        <div class="envelope-container" id="envelope">
+
+            <div class="envelope">
+                <div class="envelope-back"></div>
+                <div class="envelope-paper"></div>
+                <div class="envelope-front"></div>
+                <div class="envelope-flap"></div>
+
+                <div class="heart">♥</div>
+            </div>
+
+            <p class="envelope-text">
+                Click on the envelope.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- LETTER SCREEN -->
+    <section id="letterScreen" class="screen hidden">
+
+        <div class="letter">
+
+            <div class="letter-content">
+
+                <h1>
+                    Will you go on a date with me?
+                </h1>
+
+                <div class="question-buttons">
+
+                    <button id="noButton" class="outline-button">
+                        No
+                    </button>
+
+                    <button id="yesButton" class="outline-button">
+                        Yes
+                    </button>
+
+                </div>
+
+                <p id="noMessage" class="small-message"></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DATE OPTIONS -->
+    <section id="optionsScreen" class="screen hidden">
+
+        <div class="options-container">
+
+            <h2>Choose what you'd like to do</h2>
+
+            <div class="option-cards">
+
+                <!-- NETFLIX -->
+                <button class="option-card" id="netflixOption">
+
+                    <img src="netflix.jpg" alt="Netflix">
+
+                    <span>
+                        Netflix&Chill
+                    </span>
+
+                </button>
+
+
+                <!-- RESTAURANT -->
+                <button class="option-card" id="restaurantOption">
+
+                    <img src="restaurant.jpg" alt="Restaurant">
+
+                    <span>
+                        Go somewhere
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NETFLIX FLOW -->
+    <section id="netflixScreen" class="screen hidden">
+
+        <div class="form-card">
+
+            <h2>Choose a movie/series</h2>
+
+            <div class="input-row">
+
+                <input
+                    type="text"
+                    id="movieInput"
+                    placeholder="Write a movie or series..."
+                >
+
+                <button id="movieSend" class="pink-button">
+                    Send
+                </button>
+
+            </div>
+
+
+            <div id="netflixNext" class="next-section hidden">
+
+                <h2>Where should we meet?</h2>
+
+                <div class="place-buttons">
+
+                    <button
+                        class="place-button"
+                        id="myPlaceButton"
+                    >
+                        At my place
+                        <span class="tooltip">
+                            I don't have Tv just laptop
+                        </span>
+                    </button>
+
+                    <button
+                        class="place-button"
+                        id="yourPlaceButton"
+                    >
+                        At your place
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NETFLIX DATE -->
+    <section id="netflixDateScreen" class="screen hidden">
+
+        <div class="form-card">
+
+            <h2>When shall we meet?</h2>
+
+            <p class="date-info">
+                Choose a date and time.
+            </p>
+
+            <div class="date-inputs">
+
+                <label>
+                    Date
+                    <input type="date" id="netflixDate">
+                </label>
+
+                <label>
+                    Time
+                    <input type="time" id="netflixTime">
+                </label>
+
+            </div>
+
+            <p id="dateMessage" class="date-message"></p>
+
+            <button id="netflixDateNext" class="pink-button">
+                Continue
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- NETFLIX ADDRESS -->
+    <section id="netflixAddressScreen" class="screen hidden">
+
+        <div class="form-card">
+
+            <h2>What is your address?</h2>
+
+            <input
+                type="text"
+                id="netflixAddress"
+                class="large-input"
+                placeholder="Write the address..."
+            >
+
+            <button id="netflixAddressNext" class="pink-button">
+                Continue
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOD -->
+    <section id="foodScreen" class="screen hidden">
+
+        <div class="form-card">
+
+            <h2>What would you like?</h2>
+
+            <div class="food-grid">
+
+                <button class="food-card" data-food="Popcorn">
+
+                    <img src="popcorn.jpg" alt="Popcorn">
+
+                    <span>Popcorn</span>
+
+                </button>
+
+
+                <button class="food-card" data-food="Nachos">
+
+                    <img src="nachos.jpg" alt="Nachos">
+
+                    <span>Nachos</span>
+
+                </button>
+
+
+                <button class="food-card" data-food="Ramen">
+
+                    <img src="ramen.jpg" alt="Ramen">
+
+                    <span>Ramen</span>
+
+                </button>
+
+
+                <button class="food-card" data-food="Gummy candy">
+
+                    <img src="gummy.jpg" alt="Gummy candy">
+
+                    <span>Gummy candy</span>
+
+                </button>
+
+            </div>
+
+
+            <div id="drinkSection" class="drink-section hidden">
+
+                <h2>What drink would you like?</h2>
+
+                <input
+                    type="text"
+                    id="drinkInput"
+                    class="large-input"
+                    placeholder="Write your drink..."
+                >
+
+                <button id="finishNetflix" class="pink-button">
+                    Send
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESTAURANT QUESTION -->
+    <section id="restaurantQuestionScreen" class="screen hidden">
+
+        <div class="form-card">
+
+            <h2>Shall we go get something to eat?</h2>
+
+            <div class="question-buttons">
+
+                <button id="restaurantYes" class="outline-button">
+                    Yes
+                </button>
+
+                <button id="restaurantNo" class="outline-button">
+                    No
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESTAURANT NO -->
+    <section id="restaurantNoScreen" class="screen hidden">
+
+        <div class="form-card">
+
+            <h2>
+                Any tips on what to do?
+                <br>
+                <small>(If not, I'll come up with something.)</small>
+            </h2>
+
+            <textarea
+                id="activityTips"
+                placeholder="Write your thoughts..."
+            ></textarea>
+
+            <button id="activityNext" class="pink-button">
+                Continue
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESTAURANT YES -->
+    <section id="restaurantYesScreen" class="screen hidden">
+
+        <div class="form-card">
+
+            <h2>Mit együnk?</h2>
+
+            <input
+                type="text"
+                id="restaurantFood"
+                class="large-input"
+                placeholder="Write what you'd like to eat..."
+            >
+
+            <button id="restaurantFoodNext" class="pink-button">
+                Send
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESTAURANT DATE -->
+    <section id="restaurantDateScreen" class="screen hidden">
+
+        <div class="form-card">
+
+            <h2>When shall we meet?</h2>
+
+            <p class="date-info">
+                Choose a date and time.
+            </p>
+
+            <div class="date-inputs">
+
+                <label>
+                    Date
+                    <input type="date" id="restaurantDate">
+                </label>
+
+                <label>
+                    Time
+                    <input type="time" id="restaurantTime">
+                </label>
+
+            </div>
+
+            <p id="restaurantDateMessage" class="date-message"></p>
+
+            <button id="restaurantDateNext" class="pink-button">
+                Continue
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESTAURANT ADDRESS -->
+    <section id="restaurantAddressScreen" class="screen hidden">
+
+        <div class="form-card">
+
+            <h2>What is your address?</h2>
+
+            <input
+                type="text"
+                id="restaurantAddress"
+                class="large-input"
+                placeholder="Write the address..."
+            >
+
+            <button id="restaurantFinish" class="pink-button">
+                Send
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+    <section id="finalScreen" class="screen hidden">
+
+        <div class="final-card">
+
+            <h1>Perfect!</h1>
+
+            <p>
+                I can't wait to meet you.
+            </p>
+
+            <div class="flowers">
+                💐
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HIDDEN FORM FOR FORMSPREE -->
+    <form
+        id="emailForm"
+        action="https://formspree.io/f/xgaowrdl"
+        method="POST"
+        style="display:none;"
+    >
+
+        <input type="hidden" name="Date option" id="emailOption">
+
+        <input type="hidden" name="Movie or series" id="emailMovie">
+
+        <input type="hidden" name="Place" id="emailPlace">
+
+        <input type="hidden" name="Date" id="emailDate">
+
+        <input type="hidden" name="Time" id="emailTime">
+
+        <input type="hidden" name="Address" id="emailAddress">
+
+        <input type="hidden" name="Food" id="emailFood">
+
+        <input type="hidden" name="Drink" id="emailDrink">
+
+        <input type="hidden" name="Restaurant food" id="emailRestaurantFood">
+
+        <input type="hidden" name="Activity tips" id="emailActivityTips">
+
+    </form>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,634 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: #f9d9ee;
+    font-family: "Poppins", sans-serif;
+    color: #D470BC;
+    overflow-x: hidden;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================
+   SCREENS
+========================= */
+
+.screen {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+#envelopeScreen {
+    background: #f9d9ee;
+}
+
+.envelope-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.envelope {
+    position: relative;
+    width: 280px;
+    height: 190px;
+    perspective: 1000px;
+}
+
+.envelope-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #D470BC;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.envelope-paper {
+    position: absolute;
+    width: 85%;
+    height: 82%;
+    background: #fffafc;
+    left: 7.5%;
+    top: 10%;
+    z-index: 2;
+    border-radius: 3px;
+    transition: transform 1s ease;
+}
+
+.envelope-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #c965b0;
+    clip-path: polygon(
+        0 0,
+        50% 55%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+    z-index: 4;
+    border-radius: 5px;
+}
+
+.envelope-flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #D470BC;
+    clip-path: polygon(
+        0 0,
+        50% 58%,
+        100% 0
+    );
+    transform-origin: top;
+    z-index: 5;
+    transition: transform 0.9s ease;
+}
+
+.heart {
+    position: absolute;
+    z-index: 6;
+    color: white;
+    font-size: 28px;
+    left: 50%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+}
+
+.envelope-text {
+    margin-top: 30px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 27px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.envelope-container.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope-container.open .envelope-paper {
+    transform: translateY(-120px);
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+#letterScreen {
+    background: #f9d9ee;
+}
+
+.letter {
+    width: min(720px, 90vw);
+    min-height: 430px;
+    background: #fffdfd;
+    border-radius: 8px;
+    box-shadow: 0 25px 60px rgba(80, 30, 70, 0.15);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px;
+
+    animation: letterOpen 1s ease;
+}
+
+@keyframes letterOpen {
+    from {
+        opacity: 0;
+        transform: translateY(80px) scaleY(0.4);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+    }
+}
+
+.letter-content {
+    text-align: center;
+}
+
+.letter h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(35px, 5vw, 55px);
+    font-weight: 600;
+    color: #D470BC;
+    margin-bottom: 45px;
+}
+
+.question-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.outline-button {
+    min-width: 85px;
+    padding: 10px 22px;
+
+    background: transparent;
+    border: 2px solid #D470BC;
+    border-radius: 30px;
+
+    color: #D470BC;
+    font-size: 15px;
+
+    transition: 0.25s ease;
+}
+
+.outline-button:hover {
+    background: #D470BC;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.small-message {
+    margin-top: 25px;
+    min-height: 25px;
+    color: #a74d94;
+}
+
+
+/* =========================
+   OPTIONS
+========================= */
+
+.options-container {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+}
+
+.options-container h2,
+.form-card h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 42px;
+    margin-bottom: 35px;
+}
+
+.option-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.option-card {
+    width: 260px;
+    height: 390px;
+
+    background: white;
+    border: none;
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    box-shadow: 0 15px 40px rgba(80, 30, 70, 0.13);
+
+    transition: 0.3s ease;
+}
+
+.option-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(80, 30, 70, 0.18);
+}
+
+.option-card img {
+    width: 100%;
+    height: 315px;
+    object-fit: cover;
+}
+
+.option-card span {
+    display: block;
+    padding: 17px;
+
+    color: #D470BC;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   FORMS
+========================= */
+
+.form-card {
+    width: min(700px, 92vw);
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 45px;
+
+    box-shadow: 0 20px 50px rgba(80, 30, 70, 0.14);
+
+    text-align: center;
+}
+
+.form-card h2 {
+    color: #D470BC;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+input,
+textarea {
+    border: 2px solid #e5a5d4;
+    border-radius: 14px;
+
+    padding: 13px 15px;
+
+    outline: none;
+
+    color: #6d3d63;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #D470BC;
+}
+
+.input-row input {
+    flex: 1;
+}
+
+.large-input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.pink-button {
+    background: #D470BC;
+    color: white;
+
+    border: 2px solid #D470BC;
+
+    border-radius: 25px;
+
+    padding: 11px 25px;
+
+    font-size: 14px;
+
+    transition: 0.25s ease;
+}
+
+.pink-button:hover {
+    background: transparent;
+    color: #D470BC;
+}
+
+.next-section {
+    margin-top: 50px;
+    padding-top: 35px;
+    border-top: 1px solid #f0c4e4;
+}
+
+.place-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.place-button {
+    position: relative;
+
+    background: transparent;
+    border: 2px solid #D470BC;
+
+    color: #D470BC;
+
+    padding: 12px 24px;
+
+    border-radius: 25px;
+
+    font-size: 15px;
+}
+
+.place-button:hover {
+    background: #D470BC;
+    color: white;
+}
+
+.tooltip {
+    position: absolute;
+
+    width: 190px;
+
+    background: #D470BC;
+    color: white;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: 0.2s;
+}
+
+.place-button:hover .tooltip {
+    opacity: 1;
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+.date-info {
+    margin-bottom: 25px;
+    color: #99618c;
+}
+
+.date-inputs {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.date-inputs label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    text-align: left;
+
+    color: #8c547d;
+    font-size: 14px;
+}
+
+.date-message {
+    min-height: 25px;
+    color: #b54f9d;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   FOOD
+========================= */
+
+.food-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+}
+
+.food-card {
+    background: white;
+
+    border: 2px solid #e5a5d4;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    color: #D470BC;
+
+    transition: 0.25s;
+}
+
+.food-card:hover,
+.food-card.selected {
+    border-color: #D470BC;
+    background: #D470BC;
+    color: white;
+    transform: translateY(-4px);
+}
+
+.food-card img {
+    width: 100%;
+    height: 120px;
+
+    object-fit: cover;
+}
+
+.food-card span {
+    display: block;
+    padding: 10px 5px;
+    font-size: 14px;
+}
+
+.drink-section {
+    border-top: 1px solid #f0c4e4;
+    padding-top: 30px;
+}
+
+.drink-section h2 {
+    font-size: 30px;
+}
+
+
+/* =========================
+   TEXTAREA
+========================= */
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+
+    resize: vertical;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final-card {
+    text-align: center;
+
+    animation: finalAppear 1s ease;
+}
+
+.final-card h1 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 80px;
+
+    color: #D470BC;
+}
+
+.final-card p {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 40px;
+
+    color: #D470BC;
+
+    margin-bottom: 25px;
+}
+
+.flowers {
+    font-size: 110px;
+
+    animation: flowerPop 1s ease;
+}
+
+@keyframes finalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes flowerPop {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    .screen {
+        padding: 20px;
+    }
+
+    .letter {
+        padding: 30px 20px;
+    }
+
+    .letter h1 {
+        font-size: 38px;
+    }
+
+    .form-card {
+        padding: 30px 20px;
+    }
+
+    .input-row {
+        flex-direction: column;
+    }
+
+    .date-inputs {
+        flex-direction: column;
+    }
+
+    .food-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .option-card {
+        width: 240px;
+    }
+
+    .final-card h1 {
+        font-size: 60px;
+    }
+
+    .final-card p {
+        font-size: 30px;
+    }
+}
